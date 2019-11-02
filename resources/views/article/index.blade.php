@@ -3,7 +3,9 @@
 @section('content')
 <h1>Список статей</h1>
     @foreach($articles as $article)
-        <h2>{{$article->name}}</h2>
+        <div>
+            <a href="{{route('articles.show', ['id' => $article->id])}}">{{$article->name}}</a>
+        </div>
         <div>{{Str::limit($article->body, 200)}}</div>
     @endforeach
     {{$articles->links()}}
