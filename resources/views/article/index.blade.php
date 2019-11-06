@@ -9,6 +9,10 @@
             <a href="{{route('articles.show', ['id' => $article->id])}}">{{$article->name}}</a>
         </div>
         <div>{{Str::limit($article->body, 200)}}</div>
+        <div>
+            <a href="{{route('articles.edit', ['id' => $article->id])}}">Edit</a>
+        </div>
+        <br>
     @endforeach
     {{$articles->links()}}
 @endsection

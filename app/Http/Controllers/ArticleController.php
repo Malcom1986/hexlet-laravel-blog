@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Http\Requests\StoreArticle;
 
 class ArticleController extends Controller
 {
@@ -36,6 +37,22 @@ class ArticleController extends Controller
         $article->fill($articleData);
         $article->save();
         $request->session()->flash('success', 'Article is created!');
+        return redirect()->route('articles.index');
+    }
+
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+        return view('article.edit', compact('article'));
+    }
+
+    public function update(StoreArticle $request, $id)
+    {
+        $article = Article::findOrFail($id);
+        $articleData = $request->validated();
+        $article->fill($articleData);
+        $article->save();
+        $request->session()->flash('success', 'Article is updated!');
         return redirect()->route('articles.index');
     }
 }
