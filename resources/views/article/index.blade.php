@@ -11,6 +11,7 @@
         <div>{{Str::limit($article->body, 200)}}</div>
         <div>
             <a href="{{route('articles.edit', ['id' => $article->id])}}">Edit</a>
+            <a href="{{route('articles.destroy', $article->id)}}" data-confirm="Вы уверены?" data-method="delete">Delete</a>
         </div>
         <br>
     @endforeach

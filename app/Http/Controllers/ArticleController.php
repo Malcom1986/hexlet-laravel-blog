@@ -55,4 +55,11 @@ class ArticleController extends Controller
         $request->session()->flash('success', 'Article is updated!');
         return redirect()->route('articles.index');
     }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        $article->delete();
+        return redirect()->route('articles.index');
+    }
 }
