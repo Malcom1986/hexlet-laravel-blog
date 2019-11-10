@@ -25,7 +25,7 @@ class StoreArticle extends FormRequest
     {
         
         return [
-            'name' => "required|unique:articles,name,{$this->route('id')}",
+            'name' => "required|unique:articles,name,{$this->article->id}",
             'body' => 'required|min:10'
         ];
     }
